@@ -21,6 +21,10 @@ const winningConditions = [
 const updateStatus = (message) => {
         gameStatus.textContent = message;
     };
+    const handleCellPlayed = (clickedCell, clickedCellIndex) => {
+        board[clickedCellIndex] = currentPlayer;
+      clickedCell.textContent = currentPlayer;
+    };
 
 
 
