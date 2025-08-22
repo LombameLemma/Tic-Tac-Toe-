@@ -25,6 +25,36 @@ const updateStatus = (message) => {
         board[clickedCellIndex] = currentPlayer;
       clickedCell.textContent = currentPlayer;
     };
+const checkForWin = () => {
+        let roundWon = false;
+        // Iterate through all winning conditions
+        for (let i = 0; i < winningConditions.length; i++) {
+            const winCondition = winningConditions[i];
+            // Get the values of the three cells for the current win condition
+            const a = board[winCondition[0]];
+            const b = board[winCondition[1]];
+            const c = board[winCondition[2]];
+
+            // If any cell is empty, this condition can't be a win yet
+            if (a === '' || b === '' || c === '') {
+                continue;
+            }
+            // If all three cells match the current player's mark, it's a win
+            if (a === b && b === c) {
+                roundWon = true;
+                // Optional: Highlight winning cells
+                cells[winCondition[0]].classList.add('win');
+                cells[winCondition[1]].classList.add('win');
+                cells[winCondition[2]].classList.add('win');
+                break; // Stop checking further conditions
+            }
+        }
+
+        if (roundWon) {
+            updateStatus(`Player ${currentPlayer} has won! 🎉`);
+            gameActive = false; // End the game
+            return true;
+        }
 
 
 
