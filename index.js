@@ -55,7 +55,14 @@ const checkForWin = () => {
             gameActive = false; // End the game
             return true;
         }
+ if (!board.includes('')) {
+            updateStatus("It's a draw! 🤝");
+            gameActive = false; // End the game
+            return true;
+        }
 
+        return false; // Game not won and not drawn yet
+    };
 
 
 
