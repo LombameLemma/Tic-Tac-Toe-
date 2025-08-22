@@ -76,6 +76,34 @@ const handleCellClick = (event) => {
             return;
         }
 
+handleCellPlayed(clickedCell, clickedCellIndex); // Mark the cell
+        const isWinOrDraw = checkForWin(); // Check for win/draw
+
+        if (!isWinOrDraw) {
+            changePlayer(); // If no win/draw, switch player
+        }
+    };
+
+    /**
+     * Resets the game to its initial state.
+     */
+    const handleResetGame = () => {
+        currentPlayer = 'X'; // Reset current player to X
+        board = ['', '', '', '', '', '', '', '', '']; // Clear the board array
+        gameActive = true; // Set game back to active
+        updateStatus(`Player ${currentPlayer}'s Turn`); // Update status message
+
+        // Clear all cells on the board and remove any winning highlights
+        cells.forEach(cell => {
+            cell.textContent = '';
+            cell.classList.remove('win');
+        });
+    };
+
+    // Add event listeners to each cell and the reset button
+    cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+    resetButton.addEventListener('click', handleResetGame);
+});
 
 
 
