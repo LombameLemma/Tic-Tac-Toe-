@@ -18,7 +18,9 @@ const winningConditions = [
         [0, 4, 8], // Diagonal from top-left
         [2, 4, 6]  // Diagonal from top-right
     ];
-
+const updateStatus = (message) => {
+        gameStatus.textContent = message;
+    };
 
 
 
