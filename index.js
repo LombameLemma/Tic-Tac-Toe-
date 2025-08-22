@@ -67,7 +67,14 @@ const changePlayer = () => {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         updateStatus(`Player ${currentPlayer}'s Turn`);
     };
+const handleCellClick = (event) => {
+        const clickedCell = event.target;
+        const clickedCellIndex = parseInt(clickedCell.dataset.cellIndex);
 
+        // If the cell is already played or the game is not active, do nothing
+        if (board[clickedCellIndex] !== '' || !gameActive) {
+            return;
+        }
 
 
 
