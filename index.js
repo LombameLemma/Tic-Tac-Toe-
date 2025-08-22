@@ -63,7 +63,10 @@ const checkForWin = () => {
 
         return false; // Game not won and not drawn yet
     };
-
+const changePlayer = () => {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        updateStatus(`Player ${currentPlayer}'s Turn`);
+    };
 
 
 
